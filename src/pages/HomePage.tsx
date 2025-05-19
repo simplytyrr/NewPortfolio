@@ -9,7 +9,7 @@ import ContactSection from "@/components/sections/ContactSection";
 import { useEffect } from "react";
 
 const HomePage = () => {
-  // Scroll to top on mount
+  // Scroll to top on mount test
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
