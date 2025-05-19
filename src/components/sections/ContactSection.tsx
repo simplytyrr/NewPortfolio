@@ -42,7 +42,7 @@ const ContactSection = () => {
     };
 
     emailjs
-      .send("service_0yebuvv", "template_3vloao8", templateParams, "idABYcGysh4UmjGZqxwSQ")
+      .send("service_0yebuvv", "template_3vloao8", templateParams, "JvHec-uEMLuXPlves")
       .then(() => {
         toast({
           title: "Message sent!",
