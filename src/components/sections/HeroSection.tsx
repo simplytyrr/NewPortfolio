@@ -33,10 +33,12 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button size="lg" className="btn-glow">
-                <Download size={18} className="mr-2" />
-                Download Resume
-              </Button>
+              <a href="/ATHIRAH_RESUME.pdf" download>
+                <Button size="lg" className="btn-glow">
+                  <Download size={18} className="mr-2" />
+                  Download Resume
+                </Button>
+              </a>
               <Button 
                 size="lg" 
                 variant="outline" 
@@ -49,6 +51,7 @@ const HeroSection = () => {
                 </a>
               </Button>
             </div>
+
           </div>
 
           {/* Image */}

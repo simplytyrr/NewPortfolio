@@ -10,6 +10,8 @@ import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
 import { mockProfile } from "@/data/mockData";
 import { Linkedin, Github, Mail, Phone } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import { FaInstagram } from "react-icons/fa";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -28,50 +30,73 @@ const ContactSection = () => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      title: "New Message from Portfolio",
+      time: new Date().toLocaleString(),
+    };
+
+    emailjs
+      .send("service_0yebuvv", "template_3vloao8", templateParams, "WPEEJDbF2rVkjiI-v")
+      .then(() => {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch(() => {
+        toast({
+          title: "Something went wrong",
+          description: "Please try again later.",
+          variant: "destructive",
+        });
+      })
+      .finally(() => {
+        setIsSubmitting(false);
       });
-      
-      setFormData({ name: "", email: "", message: "" });
-      setIsSubmitting(false);
-    }, 1500);
   };
+
 
   const contactLinks = [
     {
       platform: "WhatsApp",
-      href: mockProfile.socialLinks.find(l => l.platform === "whatsapp")?.url || "#",
+      href: "https://wa.me/60189067988?text=Hi%20Athirah%2C%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect.",
       icon: <Phone size={20} />,
       text: "Send a message",
       color: "bg-green-500 hover:bg-green-600",
     },
+
     {
       platform: "LinkedIn",
-      href: mockProfile.socialLinks.find(l => l.platform === "linkedin")?.url || "#",
+      href: "https://www.linkedin.com/in/nur-athirah-binti-azmi",
       icon: <Linkedin size={20} />,
       text: "Connect with me",
       color: "bg-blue-600 hover:bg-blue-700",
     },
+
     {
       platform: "GitHub",
-      href: mockProfile.socialLinks.find(l => l.platform === "github")?.url || "#",
+      href: "https://github.com/simplytyrr",
       icon: <Github size={20} />,
       text: "Follow my code",
       color: "bg-gray-700 hover:bg-gray-800",
     },
+
     {
-      platform: "Email",
-      href: mockProfile.socialLinks.find(l => l.platform === "email")?.url || "#",
-      icon: <Mail size={20} />,
-      text: "Send an email",
-      color: "bg-red-500 hover:bg-red-600",
+      platform: "Instagram",
+      href: "https://www.instagram.com/_nurathrhhh",
+      icon: <FaInstagram size={20} />,
+      text: "Follow on Instagram",
+      color: "bg-pink-500 hover:bg-pink-600",
     },
+
+
   ];
 
   return (

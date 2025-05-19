@@ -1,12 +1,36 @@
-
 import { Link } from "react-router-dom";
-import { Linkedin, Github, Instagram, Mail } from "lucide-react";
-import { mockProfile } from "@/data/mockData";
+import { Linkedin, Github, Mail } from "lucide-react";
+import { FaInstagram } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
+  // ✅ Replace mockProfile with real social links
+  const socialLinks = [
+    {
+      platform: "linkedin",
+      url: "https://www.linkedin.com/in/nur-athirah-binti-azmi",
+      username: "nur-athirah-binti-azmi",
+    },
+    {
+      platform: "github",
+      url: "https://github.com/simplytyrr",
+    },
+    {
+      platform: "instagram",
+      url: "https://www.instagram.com/_nurathrhhh",
+    },
+    {
+      platform: "email",
+      url: "mailto:nurathirhh@gmail.com",
+    },
+    {
+      platform: "whatsapp",
+      url: "https://wa.me/60189067988?text=Hi%20Athirah%2C%20I%20would%20like%20to%20connect.",
+    },
+  ];
+
   return (
     <footer className="bg-secondary/30 pt-12 pb-6">
       <div className="container mx-auto px-4">
@@ -20,7 +44,7 @@ const Footer = () => {
               Passionate software developer specializing in VR/AR technology, cloud computing, and enterprise solutions.
             </p>
             <div className="flex space-x-3">
-              {mockProfile.socialLinks.map((link, index) => {
+              {socialLinks.map((link, index) => {
                 let icon;
                 switch (link.platform) {
                   case "linkedin":
@@ -30,7 +54,7 @@ const Footer = () => {
                     icon = <Github size={18} />;
                     break;
                   case "instagram":
-                    icon = <Instagram size={18} />;
+                    icon = <FaInstagram size={18} />;
                     break;
                   case "email":
                     icon = <Mail size={18} />;
@@ -38,7 +62,7 @@ const Footer = () => {
                   default:
                     return null;
                 }
-                
+
                 return (
                   <Button
                     key={index}
@@ -83,16 +107,16 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-2">
               <li className="text-muted-foreground">
-                WhatsApp: <a href={mockProfile.socialLinks.find(l => l.platform === "whatsapp")?.url} className="hover:text-primary transition-colors">Send Message</a>
+                WhatsApp: <a href={socialLinks.find(l => l.platform === "whatsapp")?.url} className="hover:text-primary transition-colors">Send Message</a>
               </li>
               <li className="text-muted-foreground">
-                Email: <a href={`mailto:${mockProfile.socialLinks.find(l => l.platform === "email")?.url.replace("mailto:", "")}`} className="hover:text-primary transition-colors">
-                  {mockProfile.socialLinks.find(l => l.platform === "email")?.url.replace("mailto:", "")}
+                Email: <a href={socialLinks.find(l => l.platform === "email")?.url} className="hover:text-primary transition-colors">
+                  {socialLinks.find(l => l.platform === "email")?.url.replace("mailto:", "")}
                 </a>
               </li>
               <li className="text-muted-foreground">
-                LinkedIn: <a href={mockProfile.socialLinks.find(l => l.platform === "linkedin")?.url} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                  {mockProfile.socialLinks.find(l => l.platform === "linkedin")?.username}
+                LinkedIn: <a href={socialLinks.find(l => l.platform === "linkedin")?.url} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  {socialLinks.find(l => l.platform === "linkedin")?.username}
                 </a>
               </li>
             </ul>
@@ -101,7 +125,7 @@ const Footer = () => {
 
         <div className="border-t border-border pt-6 text-center">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} {mockProfile.name}. All rights reserved.
+            © {currentYear} Nur Athirah Binti Azmi. All rights reserved.
           </p>
         </div>
       </div>
