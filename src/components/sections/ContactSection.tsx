@@ -1,0 +1,211 @@
+
+import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "@/hooks/use-toast";
+import { useInView } from "@/hooks/use-in-view";
+import { cn } from "@/lib/utils";
+import { mockProfile } from "@/data/mockData";
+import { Linkedin, Github, Mail, Phone } from "lucide-react";
+
+const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate form submission
+    setTimeout(() => {
+      toast({
+        title: "Message sent!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      });
+      
+      setFormData({ name: "", email: "", message: "" });
+      setIsSubmitting(false);
+    }, 1500);
+  };
+
+  const contactLinks = [
+    {
+      platform: "WhatsApp",
+      href: mockProfile.socialLinks.find(l => l.platform === "whatsapp")?.url || "#",
+      icon: <Phone size={20} />,
+      text: "Send a message",
+      color: "bg-green-500 hover:bg-green-600",
+    },
+    {
+      platform: "LinkedIn",
+      href: mockProfile.socialLinks.find(l => l.platform === "linkedin")?.url || "#",
+      icon: <Linkedin size={20} />,
+      text: "Connect with me",
+      color: "bg-blue-600 hover:bg-blue-700",
+    },
+    {
+      platform: "GitHub",
+      href: mockProfile.socialLinks.find(l => l.platform === "github")?.url || "#",
+      icon: <Github size={20} />,
+      text: "Follow my code",
+      color: "bg-gray-700 hover:bg-gray-800",
+    },
+    {
+      platform: "Email",
+      href: mockProfile.socialLinks.find(l => l.platform === "email")?.url || "#",
+      icon: <Mail size={20} />,
+      text: "Send an email",
+      color: "bg-red-500 hover:bg-red-600",
+    },
+  ];
+
+  return (
+    <section id="contact" className="py-20" ref={ref}>
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <Badge variant="outline" className="mb-3">Get In Touch</Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Me</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Have a question or want to work together? Feel free to reach out!
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {/* Contact Form */}
+          <Card className={cn(
+            "glass-panel border-primary/10",
+            inView ? "animate-fade-in" : "opacity-0"
+          )}>
+            <CardContent className="p-6">
+              <h3 className="text-xl font-semibold mb-6">Send Me a Message</h3>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <label 
+                    htmlFor="name" 
+                    className="text-sm font-medium block"
+                  >
+                    Your Name
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="John Doe"
+                    required
+                    className="bg-secondary/40"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <label 
+                    htmlFor="email" 
+                    className="text-sm font-medium block"
+                  >
+                    Your Email
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="john@example.com"
+                    required
+                    className="bg-secondary/40"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <label 
+                    htmlFor="message" 
+                    className="text-sm font-medium block"
+                  >
+                    Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Your message here..."
+                    rows={5}
+                    required
+                    className="bg-secondary/40"
+                  />
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full btn-glow" 
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+
+          {/* Contact Links */}
+          <div className={cn(
+            "space-y-6",
+            inView ? "animate-slide-in" : "opacity-0"
+          )}>
+            <h3 className="text-xl font-semibold mb-6">Connect With Me</h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {contactLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    "flex items-center p-4 rounded-lg text-white transition-all",
+                    link.color,
+                    "transform hover:-translate-y-1"
+                  )}
+                >
+                  <div className="mr-3 bg-white/20 p-2 rounded-full">
+                    {link.icon}
+                  </div>
+                  <div>
+                    <div className="font-medium">{link.platform}</div>
+                    <div className="text-sm text-white/80">{link.text}</div>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            <Card className="glass-panel border-primary/10 p-6 mt-6">
+              <h4 className="text-lg font-semibold mb-3">Let's Create Something Amazing</h4>
+              <p className="text-muted-foreground">
+                I'm currently available for freelance work and full-time opportunities.
+                If you have a project that you want to get started, or if you're looking
+                for a team member with my skill set, don't hesitate to reach out.
+              </p>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ContactSection;
