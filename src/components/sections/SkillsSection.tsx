@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { mockSkills } from "@/data/mockData";
 import { Badge } from "@/components/ui/badge";
@@ -12,12 +11,10 @@ const SkillsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
-  // Group skills by category
   const categories = Object.values(SkillCategory);
-  
-  // Filter skills based on selected category
-  const filteredSkills = selectedCategory === "all" 
-    ? mockSkills 
+
+  const filteredSkills = selectedCategory === "all"
+    ? mockSkills
     : mockSkills.filter(skill => skill.category === selectedCategory);
 
   return (
@@ -31,7 +28,6 @@ const SkillsSection = () => {
           </p>
         </div>
 
-        {/* Skills Tabs */}
         <Tabs 
           defaultValue="all" 
           value={selectedCategory}
@@ -52,7 +48,7 @@ const SkillsSection = () => {
           <TabsContent value={selectedCategory} className="mt-0">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {filteredSkills.map((skill, index) => (
-                <div 
+                <div
                   key={skill.id}
                   className={cn(
                     "glass-panel p-4 rounded-lg transition-all duration-500",

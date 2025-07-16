@@ -8,18 +8,24 @@ const ExperienceSection = () => {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   const experience = {
-    position: "UI/UX & Front-End Developer Intern",
+    position: "UI/UX & Front-End Developer Internship",
     company: "Media Smart Resources Sdn Bhd",
     location: "Putrajaya",
     duration: "March 2025 – August 2025",
     description: [
-      "Developed e-TAGS, a digital case management system for KPWKM using React, Laravel, and MySQL.",
-      "Designed responsive UI/UX prototypes with Figma and implemented them into reusable components.",
-      "Built interactive complaint forms, dashboards, and landing pages with dynamic API integration.",
-      "Participated in Agile sprints, daily standups, SRS documentation, and client UI presentations.",
-      "Assisted backend integration and database updates using phpMyAdmin, Dbngin, and XAMPP."
+      "Contributed to the development of e-TAGS, a digital tribunal complaint management system for KPWKM.",
+      "Designed user-centric, responsive UI/UX prototypes in Figma and translated them into React components.",
+      "Implemented dynamic modules for complaint forms, dashboards, and authentication flows with API integration.",
+      "Collaborated with full-stack developers to integrate Laravel backend with MySQL and RESTful APIs.",
+      "Prepared SRS documentation and participated in sprint planning, daily standups, and progress demos.",
+      "Led client-facing UI presentations and gathered feedback to improve usability and accessibility.",
+      "Utilized Git and Sourcetree for version control and collaborated via Agile workflows with the project team.",
+      "Configured local development environments using XAMPP, Herd, and Dbngin to support database and API testing."
     ],
-    tools: ["React", "Laravel", "Figma", "MySQL", "Canva", "Git", "Sourcetree", "Herd", "Dbngin"]
+    tools: [
+      "React", "Laravel", "Figma", "MySQL", "Git", "Sourcetree",
+      "phpMyAdmin", "Canva", "Dbngin", "XAMPP", "Herd"
+    ]
   };
 
   return (
@@ -29,12 +35,12 @@ const ExperienceSection = () => {
           <Badge variant="outline" className="mb-3">Professional Experience</Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Experience</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Professional internship experience in software development and UI/UX design.
+            My 6-month internship helped me grow as a UI/UX designer and front-end developer by working on real-world systems for government digital transformation.
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <Card 
+          <Card
             className={cn(
               "glass-panel border-primary/20 hover-card transition-all duration-500",
               inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
@@ -45,13 +51,13 @@ const ExperienceSection = () => {
                 <div className="flex items-start gap-4">
                   {/* Company logo */}
                   <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center flex-shrink-0 p-1">
-                    <img 
-                      src="/lovable-uploads/9da774cb-9e0d-4d5b-bf75-eeaaa666a786.png" 
-                      alt="Media Smart Resources" 
+                    <img
+                      src="/images/media_smart.png"
+                      alt="Media Smart Resources"
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  
+
                   <div className="flex-1 min-w-0">
                     <h3 className="text-xl font-semibold text-foreground mb-1">
                       {experience.position}
@@ -69,7 +75,7 @@ const ExperienceSection = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-1 text-muted-foreground bg-secondary/30 px-3 py-1 rounded-full">
                   <Calendar className="w-4 h-4" />
                   <span className="text-sm font-medium">{experience.duration}</span>
@@ -85,10 +91,7 @@ const ExperienceSection = () => {
                 </h4>
                 <ul className="space-y-3">
                   {experience.description.map((item, index) => (
-                    <li 
-                      key={index}
-                      className="flex items-start gap-3 text-muted-foreground"
-                    >
+                    <li key={index} className="flex items-start gap-3 text-muted-foreground">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                       <span className="leading-relaxed">{item}</span>
                     </li>
@@ -103,7 +106,7 @@ const ExperienceSection = () => {
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {experience.tools.map((tool, index) => (
-                    <Badge 
+                    <Badge
                       key={index}
                       variant="secondary"
                       className="bg-secondary/50 hover:bg-secondary/70 transition-colors"

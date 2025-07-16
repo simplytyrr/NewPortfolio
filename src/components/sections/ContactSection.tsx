@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -8,10 +7,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import { mockProfile } from "@/data/mockData";
 import { Linkedin, Github, Mail, Phone } from "lucide-react";
-import emailjs from "@emailjs/browser";
 import { FaInstagram } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -30,8 +28,8 @@ const ContactSection = () => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+    e.preventDefault();
+    setIsSubmitting(true);
 
     const templateParams = {
       name: formData.name,
@@ -46,7 +44,7 @@ const ContactSection = () => {
       .then(() => {
         toast({
           title: "Message sent!",
-          description: "Thank you for your message. I'll get back to you soon.",
+          description: "Thank you for reaching out. I’ll get back to you soon!",
         });
         setFormData({ name: "", email: "", message: "" });
       })
@@ -62,7 +60,6 @@ const ContactSection = () => {
       });
   };
 
-
   const contactLinks = [
     {
       platform: "WhatsApp",
@@ -71,7 +68,6 @@ const ContactSection = () => {
       text: "Send a message",
       color: "bg-green-500 hover:bg-green-600",
     },
-
     {
       platform: "LinkedIn",
       href: "https://www.linkedin.com/in/nur-athirah-binti-azmi",
@@ -79,7 +75,6 @@ const ContactSection = () => {
       text: "Connect with me",
       color: "bg-blue-600 hover:bg-blue-700",
     },
-
     {
       platform: "GitHub",
       href: "https://github.com/simplytyrr",
@@ -87,7 +82,6 @@ const ContactSection = () => {
       text: "Follow my code",
       color: "bg-gray-700 hover:bg-gray-800",
     },
-
     {
       platform: "Instagram",
       href: "https://www.instagram.com/_nurathrhhh",
@@ -95,8 +89,13 @@ const ContactSection = () => {
       text: "Follow on Instagram",
       color: "bg-pink-500 hover:bg-pink-600",
     },
-
-
+    {
+      platform: "Email",
+      href: "mailto:nurathirah.dev@gmail.com",
+      icon: <Mail size={20} />,
+      text: "nurathirhh@gmail.com",
+      color: "bg-purple-500 hover:bg-purple-600",
+    },
   ];
 
   return (
@@ -106,7 +105,7 @@ const ContactSection = () => {
           <Badge variant="outline" className="mb-3">Get In Touch</Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Me</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Have a question or want to work together? Feel free to reach out!
+            Have a question, collaboration idea, or project opportunity? Feel free to reach out!
           </p>
         </div>
 
@@ -118,13 +117,9 @@ const ContactSection = () => {
           )}>
             <CardContent className="p-6">
               <h3 className="text-xl font-semibold mb-6">Send Me a Message</h3>
-              
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <label 
-                    htmlFor="name" 
-                    className="text-sm font-medium block"
-                  >
+                  <label htmlFor="name" className="text-sm font-medium block">
                     Your Name
                   </label>
                   <Input
@@ -137,12 +132,8 @@ const ContactSection = () => {
                     className="bg-secondary/40"
                   />
                 </div>
-                
                 <div className="space-y-2">
-                  <label 
-                    htmlFor="email" 
-                    className="text-sm font-medium block"
-                  >
+                  <label htmlFor="email" className="text-sm font-medium block">
                     Your Email
                   </label>
                   <Input
@@ -156,12 +147,8 @@ const ContactSection = () => {
                     className="bg-secondary/40"
                   />
                 </div>
-                
                 <div className="space-y-2">
-                  <label 
-                    htmlFor="message" 
-                    className="text-sm font-medium block"
-                  >
+                  <label htmlFor="message" className="text-sm font-medium block">
                     Message
                   </label>
                   <Textarea
@@ -175,7 +162,6 @@ const ContactSection = () => {
                     className="bg-secondary/40"
                   />
                 </div>
-                
                 <Button 
                   type="submit" 
                   className="w-full btn-glow" 
@@ -193,7 +179,6 @@ const ContactSection = () => {
             inView ? "animate-slide-in" : "opacity-0"
           )}>
             <h3 className="text-xl font-semibold mb-6">Connect With Me</h3>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {contactLinks.map((link, index) => (
                 <a
@@ -219,11 +204,10 @@ const ContactSection = () => {
             </div>
 
             <Card className="glass-panel border-primary/10 p-6 mt-6">
-              <h4 className="text-lg font-semibold mb-3">Let's Create Something Amazing</h4>
+              <h4 className="text-lg font-semibold mb-3">Let’s Build Something Impactful</h4>
               <p className="text-muted-foreground">
-                I'm currently available for freelance work and full-time opportunities.
-                If you have a project that you want to get started, or if you're looking
-                for a team member with my skill set, don't hesitate to reach out.
+                I'm open to freelance work, collaborations, or full-time opportunities. 
+                If you’ve got a project or team that aligns with my skills, I’d love to hear from you.
               </p>
             </Card>
           </div>

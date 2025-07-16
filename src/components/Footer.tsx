@@ -41,7 +41,7 @@ const Footer = () => {
               <span className="text-2xl font-bold gradient-text">Athirah.</span>
             </Link>
             <p className="text-muted-foreground">
-              Passionate software developer specializing in VR/AR technology, cloud computing, and enterprise solutions.
+              Passionate software developer specializing in front-end technologies, VR/AR innovation, cloud computing, and enterprise systems.
             </p>
             <div className="flex space-x-3">
               {socialLinks.map((link, index) => {

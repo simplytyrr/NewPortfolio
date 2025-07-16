@@ -33,10 +33,10 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <a href="/ATHIRAH_RESUME.pdf" download>
+              <a href="/NURATHIRAH_RESUME.pdf" download>
                 <Button size="lg" className="btn-glow">
                   <Download size={18} className="mr-2" />
-                  Download Resume
+                  Download CV
                 </Button>
               </a>
               <Button 
@@ -71,7 +71,7 @@ const HeroSection = () => {
                 <p className="text-sm font-medium">VR/AR Developer</p>
               </div>
               <div className="absolute -bottom-4 -left-4 glass-panel p-3 animate-float shadow-lg" style={{ animationDelay: "1s" }}>
-                <p className="text-sm font-medium">Software Engineer</p>
+                <p className="text-sm font-medium">UI/UX & Frontend Developer</p>
               </div>
             </div>
           </div>

@@ -217,8 +217,8 @@ export const mockSkills: Skill[] = [
 
 export const mockProfile: ProfileData = {
   name: "Nur Athirah Binti Azmi",
-  title: "Aspiring Software Developer | VR/AR Enthusiast | Cloud & ERP Explorer",
-  bio: "I am a passionate software developer with a strong interest in emerging technologies, particularly Virtual Reality, Augmented Reality, Cloud Computing, and SAP ERP. With a strong foundation in programming, multimedia, and specialized technologies, I aim to create innovative solutions that bridge the digital and physical worlds.",
+  title: "Frontend & UI/UX Developer | VR/AR Explorer | Laravel • React • Unity • Azure",
+  bio: "I am a Computer Science student specializing in Graphics & Multimedia Technology with practical experience in full-stack development, UI/UX design, and immersive technologies. During my internship, I built a real-world digital case management system using React, Laravel, and MySQL. I'm passionate about creating interactive, user-centric solutions with tools like Unity, SAP, and Microsoft Azure to bridge digital innovation with real impact.",
   avatarUrl: "/lovable-uploads/3f846b0c-f64e-4be5-a3c1-3e6600ccc0af.png",
   resumeUrl: "#",
   education: [
